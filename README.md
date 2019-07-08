@@ -1,6 +1,6 @@
 # Mondoo Homebrew Tap
 
-Once Homebrew is installed, you can add the mondoo repository with the following command:
+Once Homebrew is installed, you can add the Mondoo Tap via the following command:
 
 ```
 $ brew tap mondoolabs/mondoo
