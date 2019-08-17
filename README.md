@@ -15,7 +15,7 @@ $ brew install mondoo
 To update mondoo:
 
 ```
-brew upgrade mondoo
+brew update && brew upgrade mondoo
 ```
 
 At any time you can remove the installation and the tap via:
