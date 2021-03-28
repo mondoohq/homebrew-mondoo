@@ -1,7 +1,7 @@
 class Mondoo < Formula
   # Update these values as needed as new versions are released
-  current_version="3.7.2"
-  current_sha256="99ef8767c08a07d46d58bd78f60144b62800df3da32fc9f9e3be8737efc05cd2"
+  current_version="4.0.0"
+  current_sha256="3d959fe2d2839fe5c96706f263ef7c7d73f727c71da28c323c2021c2caa5cd28"
 
   desc "Mondoo Labs"
   homepage "https://mondoo.io"
