@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # download latest version and parse the darwin version
-allDarwin=$(curl -sSL 'https://releases.mondoo.io/mondoo/latest.json' | jq '.files[] | select(.filename | match("darwin"; "g"))')
+allDarwin=$(curl -sSL 'https://releases.mondoo.io/mondoo/latest.json?ignoreCache=1' | jq '.files[] | select(.filename | match("darwin"; "g"))')
 echo $allDarwin
 
 for build in "arm64" "amd64"
@@ -17,6 +17,6 @@ do
     echo $hash
     echo "--------"
 
-    sed -E -i "/#${build}sha/s|\".*\"|${hash}|g" Formula/mondoo.rb
-    sed -E -i "/current_version=/s|\".*\"|${version}|g" Formula/mondoo.rb
+    sed -E -i=.back "/#${build}sha/s|\".*\"|${hash}|g" Formula/mondoo.rb
+    sed -E -i=.back "/current_version=/s|\".*\"|${version}|g" Formula/mondoo.rb
 done
