@@ -1,11 +1,11 @@
 class Mondoo < Formula
   # Update these values as needed as new versions are released
-  current_version="5.0.0"
+  current_version="5.1.0"
   if Hardware::CPU.intel?
-    sha256 "376d0ef4830ecc24826c23c000689d76a657f1780972c9a56a84c3db9a27a469" #amd64sha
+    sha256 "15884c8cd54ca634bf289a6ef97c05e4ad9348757d1f426d84a68d42d36d8d40" #amd64sha
     url "https://releases.mondoo.io/mondoo/#{current_version}/mondoo_#{current_version}_darwin_amd64.tar.gz"
   else
-    sha256 "ad250c6552a49116159c0b3cc3516bffdcab76e1200ae4255920131b218eb4a0" #arm64sha
+    sha256 "0dd66be7b89fffea6b57702131deac257cca20871a73c5dc1254a839001ea072" #arm64sha
     url "https://releases.mondoo.io/mondoo/#{current_version}/mondoo_#{current_version}_darwin_arm64.tar.gz"
   end
 
