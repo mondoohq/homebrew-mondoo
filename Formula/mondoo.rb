@@ -2,14 +2,14 @@
 class Mondoo < Formula
   desc "Mondoo"
   homepage "https://mondoo.io"
-  version "5.10.0"
+  version "5.11.0"
 
   if Hardware::CPU.intel?
-    sha256 "22ab4a5da5981d9b76500c1535619173d64f0847e86cd5a952b9ddf0f418d4e3"
-    url "https://releases.mondoo.io/mondoo/5.10.0/mondoo_5.10.0_darwin_amd64.tar.gz"
+    sha256 "fac8ff9791ae1bff7e6a782f1c82e5bbb9a61200fa8d4d3e7da4a8c4814fdb64"
+    url "https://releases.mondoo.io/mondoo/5.11.0/mondoo_5.11.0_darwin_amd64.tar.gz"
   else
-    sha256 "ff29c56930046f8e51f3e56d5c94c66e21d02e7099464f6a501f3dc3bcb4b021"
-    url "https://releases.mondoo.io/mondoo/5.10.0/mondoo_5.10.0_darwin_arm64.tar.gz"
+    sha256 "78b0e1bbe0196781facd700a54278cfc443e2316ac3566124222ad0c5b568b0d"
+    url "https://releases.mondoo.io/mondoo/5.11.0/mondoo_5.11.0_darwin_arm64.tar.gz"
   end
 
   def install
