@@ -31,7 +31,7 @@ cask "mondoo-cli" do
   pkg "mondoo_#{version}_darwin_universal.pkg"
 
   uninstall script: {
-    executable: "/Library/Mondoo/#{version}/uninstall.sh",
+    executable: "/Library/Mondoo/uninstall.sh",
     sudo:       true,
   }
 
@@ -39,6 +39,7 @@ cask "mondoo-cli" do
     "/Library/Mondoo",
     "/etc/opt/mondoo",
     "/usr/local/bin/mondoo",
+    "/Library/LaunchDaemons/io.mondoo.client.plist",
   ]
 end
 `
