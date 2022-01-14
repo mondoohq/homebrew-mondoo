@@ -1,6 +1,6 @@
 
 class Mondoo < Formula
-  desc "Mondoo"
+  desc "Mondoo Client CLI for the Mondoo Policy as Code Platform"
   homepage "https://mondoo.io"
   version "5.21.1"
 
