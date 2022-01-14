@@ -2,18 +2,19 @@ package main
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
-	"io"
 	"log"
-	"net/http"
 	"os"
 	"regexp"
 	"strings"
-	"text/template"
 )
 
-const latestUrl = "https://releases.mondoo.io/mondoo/latest.json?ignoreCache=1"
+const (
+	latestUrl = "https://releases.mondoo.io/mondoo/latest.json?ignoreCache=1"
+	desc      = "Mondoo Client CLI for the Mondoo Policy as Code Platform"
+	homepage  = "https://mondoo.io"
+	binary    = "mondoo"
+)
 
 var versionMatcher = regexp.MustCompile(`mondoo\/(\d+.\d+.\d+)\/mondoo`)
 
@@ -25,99 +26,58 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// filter by darwin
-	formula := Formula{
-		Desc:     "Mondoo",
-		Homepage: "https://mondoo.io",
-		Binary:   "mondoo",
-	}
-
-	for i := range latest.Files {
-		f := latest.Files[i]
-
-		m := versionMatcher.FindStringSubmatch(f.Filename)
-		if len(m) == 2 {
-			formula.Version = m[1]
-		}
-
-		if f.Platform == "darwin" && strings.HasSuffix(f.Filename, "amd64.tar.gz") {
-			formula.Sha256Amd64 = f.Hash
-		}
-		if f.Platform == "darwin" && strings.HasSuffix(f.Filename, "arm64.tar.gz") {
-			formula.Sha256Arm64 = f.Hash
-		}
+	if len(os.Args) != 2 {
+		panic("need argument 'formula' or 'cask'")
 	}
 
 	buf := new(bytes.Buffer)
-	renderFormula(formula, buf)
+	switch os.Args[1] {
+	case "formula":
+		// filter by darwin releases and create formula
+		formula := &Formula{
+			Desc:     desc,
+			Homepage: homepage,
+			Binary:   binary,
+		}
+
+		for i := range latest.Files {
+			f := latest.Files[i]
+
+			m := versionMatcher.FindStringSubmatch(f.Filename)
+			if len(m) == 2 {
+				formula.Version = m[1]
+			}
+
+			if f.Platform == "darwin" && strings.HasSuffix(f.Filename, "amd64.tar.gz") {
+				formula.Sha256Amd64 = f.Hash
+			}
+			if f.Platform == "darwin" && strings.HasSuffix(f.Filename, "arm64.tar.gz") {
+				formula.Sha256Arm64 = f.Hash
+			}
+		}
+		formula.Render(buf)
+	case "cask":
+		cask := &Cask{
+			Desc:     desc,
+			Homepage: homepage,
+			Binary:   binary,
+		}
+
+		for i := range latest.Files {
+			f := latest.Files[i]
+
+			m := versionMatcher.FindStringSubmatch(f.Filename)
+			if len(m) == 2 {
+				cask.Version = m[1]
+			}
+
+			if f.Platform == "darwin" && strings.HasSuffix(f.Filename, "darwin_universal.pkg") {
+				cask.Sha256 = f.Hash
+			}
+		}
+		cask.Render(buf)
+	}
+
 	fmt.Println(buf.String())
 	os.Exit(0)
-}
-
-type Latest struct {
-	Files []File `json:"files"`
-}
-
-type File struct {
-	Filename string `json:"filename"`
-	Size     int    `json:"size"`
-	Platform string `json:"platform"`
-	Hash     string `json:"hash"`
-}
-
-func fetchLatest() (*Latest, error) {
-	resp, err := http.Get(latestUrl)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	data, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	var latest Latest
-	if err := json.Unmarshal(data, &latest); err != nil {
-		return nil, err
-	}
-
-	return &latest, nil
-}
-
-type Formula struct {
-	Desc        string `json:"desc"`
-	Homepage    string `json:"homepage"`
-	Version     string `json:"version"`
-	Binary      string `json:"binary"`
-	Sha256Amd64 string `json:"sha254amd64"`
-	Sha256Arm64 string `json:"sha256arm64"`
-}
-
-var formulaTemplate = `
-class Mondoo < Formula
-  desc "{{ .Desc }}"
-  homepage "{{ .Homepage }}"
-  version "{{ .Version }}"
-
-  if Hardware::CPU.intel?
-    sha256 "{{ .Sha256Amd64 }}"
-    url "https://releases.mondoo.io/{{ .Binary }}/{{ .Version }}/{{ .Binary }}_{{ .Version }}_darwin_amd64.tar.gz"
-  else
-    sha256 "{{ .Sha256Arm64 }}"
-    url "https://releases.mondoo.io/{{ .Binary }}/{{ .Version }}/{{ .Binary }}_{{ .Version }}_darwin_arm64.tar.gz"
-  end
-
-  def install
-    bin.install "{{ .Binary }}"
-  end
-
-  test do
-    system "#{bin}/{{ .Binary }} --version"
-  end
-end
-`
-
-func renderFormula(f Formula, out io.Writer) error {
-	t := template.Must(template.New("formula").Parse(formulaTemplate))
-	return t.Execute(out, f)
 }

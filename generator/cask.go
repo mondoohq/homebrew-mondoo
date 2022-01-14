@@ -1,12 +1,27 @@
+package main
 
+import (
+	"io"
+	"text/template"
+)
+
+type Cask struct {
+	Desc     string `json:"desc"`
+	Homepage string `json:"homepage"`
+	Version  string `json:"version"`
+	Binary   string `json:"binary"`
+	Sha256   string `json:"sha254"`
+}
+
+var caskTemplate = `
 cask "mondoo-cli" do
   name "Mondoo"
-  desc "Mondoo Client CLI for the Mondoo Policy as Code Platform"
-  version "5.21.1"
-  homepage "https://mondoo.io"
+  desc "{{ .Desc }}"
+  version "{{ .Version }}"
+  homepage "{{ .Homepage }}"
 
   url "https://releases.mondoo.io/mondoo/#{version}/mondoo_#{version}_darwin_universal.pkg"
-  sha256 "2c09f340118bde7d45208a11a92df634213ab0b052572beeac587330d4421ada"
+  sha256 "{{ .Sha256 }}"
 
   livecheck do
     url "https://releases.mondoo.io/mondoo/latest/index.html"
@@ -26,4 +41,9 @@ cask "mondoo-cli" do
     "/usr/local/bin/mondoo",
   ]
 end
+`
 
+func (c *Cask) Render(out io.Writer) error {
+	t := template.Must(template.New("cask").Parse(caskTemplate))
+	return t.Execute(out, c)
+}
