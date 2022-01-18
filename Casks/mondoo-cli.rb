@@ -2,11 +2,11 @@
 cask "mondoo-cli" do
   name "Mondoo"
   desc "Mondoo Client CLI for the Mondoo Policy as Code Platform"
-  version "5.21.1"
+  version "5.22.0"
   homepage "https://mondoo.io"
 
   url "https://releases.mondoo.io/mondoo/#{version}/mondoo_#{version}_darwin_universal.pkg"
-  sha256 "2c09f340118bde7d45208a11a92df634213ab0b052572beeac587330d4421ada"
+  sha256 "5b2a2ec4341815b1b234fe4f965bedbcd02449cab165d6e4dcf1643c576cabb5"
 
   livecheck do
     url "https://releases.mondoo.io/mondoo/latest/index.html"
@@ -16,7 +16,7 @@ cask "mondoo-cli" do
   pkg "mondoo_#{version}_darwin_universal.pkg"
 
   uninstall script: {
-    executable: "/Library/Mondoo/#{version}/uninstall.sh",
+    executable: "/Library/Mondoo/uninstall.sh",
     sudo:       true,
   }
 
@@ -24,6 +24,7 @@ cask "mondoo-cli" do
     "/Library/Mondoo",
     "/etc/opt/mondoo",
     "/usr/local/bin/mondoo",
+    "/Library/LaunchDaemons/io.mondoo.client.plist",
   ]
 end
 
