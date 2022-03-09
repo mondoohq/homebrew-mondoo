@@ -54,10 +54,10 @@ class Mondoo < Formula
 
   if Hardware::CPU.intel?
     sha256 "{{ .Sha256Amd64 }}"
-    url "https://releases.mondoo.io/{{ .Binary }}/{{ .Version }}/{{ .Binary }}_{{ .Version }}_darwin_amd64.tar.gz"
+    url "https://releases.mondoo.com/{{ .Binary }}/{{ .Version }}/{{ .Binary }}_{{ .Version }}_darwin_amd64.tar.gz"
   else
     sha256 "{{ .Sha256Arm64 }}"
-    url "https://releases.mondoo.io/{{ .Binary }}/{{ .Version }}/{{ .Binary }}_{{ .Version }}_darwin_arm64.tar.gz"
+    url "https://releases.mondoo.com/{{ .Binary }}/{{ .Version }}/{{ .Binary }}_{{ .Version }}_darwin_arm64.tar.gz"
   end
 
   def install

@@ -20,11 +20,11 @@ cask "mondoo-cli" do
   version "{{ .Version }}"
   homepage "{{ .Homepage }}"
 
-  url "https://releases.mondoo.io/mondoo/#{version}/mondoo_#{version}_darwin_universal.pkg"
+  url "https://releases.mondoo.com/mondoo/#{version}/mondoo_#{version}_darwin_universal.pkg"
   sha256 "{{ .Sha256 }}"
 
   livecheck do
-    url "https://releases.mondoo.io/mondoo/latest/index.html"
+    url "https://releases.mondoo.com/mondoo/latest/index.html"
     regex(%r{href='\.\./(\d+(?:\.\d+)+)}i)
   end
 

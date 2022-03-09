@@ -3,13 +3,13 @@ cask "mondoo-cli" do
   name "Mondoo"
   desc "Mondoo Client CLI for the Mondoo Policy as Code Platform"
   version "5.29.1"
-  homepage "https://mondoo.io"
+  homepage "https://mondoo.com"
 
-  url "https://releases.mondoo.io/mondoo/#{version}/mondoo_#{version}_darwin_universal.pkg"
+  url "https://releases.mondoo.com/mondoo/#{version}/mondoo_#{version}_darwin_universal.pkg"
   sha256 "817c79974f87626c19d69a0bf9bfeed303db3c527dd18d3061c796d46428a34f"
 
   livecheck do
-    url "https://releases.mondoo.io/mondoo/latest/index.html"
+    url "https://releases.mondoo.com/mondoo/latest/index.html"
     regex(%r{href='\.\./(\d+(?:\.\d+)+)}i)
   end
 
