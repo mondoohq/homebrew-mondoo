@@ -7,7 +7,7 @@ To install Homebrew, visit https://brew.sh/.
 Once Homebrew is installed, you can add the Mondoo Tap via the following command:
 
 ```
-$ brew tap mondoolabs/mondoo
+$ brew tap mondoohq/mondoo
 ```
 
 To install mondoo:
@@ -26,7 +26,7 @@ At any time you can remove the installation and the tap via:
 
 ```
 brew uninstall mondoo
-brew untap mondoolabs/mondoo
+brew untap mondoohq/mondoo
 ```
 
 For more information, visit https://mondoo.com
