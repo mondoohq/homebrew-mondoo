@@ -1,4 +1,4 @@
-module github.com/mondoolabs/homebrew-mondoo/generator
+module github.com/mondoohq/homebrew-mondoo/generator
 
 go 1.17
 
