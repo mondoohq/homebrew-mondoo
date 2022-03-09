@@ -29,7 +29,7 @@ brew uninstall mondoo
 brew untap mondoolabs/mondoo
 ```
 
-For more information, visit https://mondoo.io
+For more information, visit https://mondoo.com
 
 # Updating the Tap
 

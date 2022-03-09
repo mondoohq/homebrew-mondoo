@@ -10,9 +10,9 @@ import (
 )
 
 const (
-	latestUrl = "https://releases.mondoo.io/mondoo/latest.json?ignoreCache=1"
+	latestUrl = "https://releases.mondoo.com/mondoo/latest.json?ignoreCache=1"
 	desc      = "Mondoo Client CLI for the Mondoo Policy as Code Platform"
-	homepage  = "https://mondoo.io"
+	homepage  = "https://mondoo.com"
 	binary    = "mondoo"
 )
 
