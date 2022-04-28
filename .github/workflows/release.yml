@@ -1,0 +1,38 @@
+name: Update for Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "version that should be released"
+        required: true
+        type: string
+jobs:
+  date:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the branch
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '>=1.17.0'
+
+      # runs go to generate the update
+      - run: make update
+
+      # Commit changes
+      - name: setup git config
+        run: |
+          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: commit
+        run: |
+          echo "${{ inputs.version }}"
+          git add Formula/mondoo.rb
+          git add Casks/mondoo-cli.rb
+          git commit -m "${{ inputs.version }}"
+          git push origin master
