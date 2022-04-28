@@ -7,7 +7,7 @@ on:
         required: true
         type: string
 jobs:
-  date:
+  release:
     runs-on: ubuntu-latest
     steps:
       # Checkout the branch
@@ -31,8 +31,8 @@ jobs:
 
       - name: commit
         run: |
-          echo "${{ inputs.version }}"
+          echo '${{ github.event.inputs.version }}'
           git add Formula/mondoo.rb
           git add Casks/mondoo-cli.rb
-          git commit -m "${{ inputs.version }}"
+          git commit -m '${{ github.event.inputs.version }}'
           git push origin master
