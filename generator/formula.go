@@ -18,7 +18,7 @@ type File struct {
 	Hash     string `json:"hash"`
 }
 
-func fetchLatest() (*Latest, error) {
+func fetchLatest(latestUrl string) (*Latest, error) {
 	resp, err := http.Get(latestUrl)
 	if err != nil {
 		return nil, err
@@ -38,6 +38,7 @@ func fetchLatest() (*Latest, error) {
 }
 
 type Formula struct {
+	Class       string `json:"class"`
 	Desc        string `json:"desc"`
 	Homepage    string `json:"homepage"`
 	Version     string `json:"version"`
@@ -47,7 +48,7 @@ type Formula struct {
 }
 
 var formulaTemplate = `
-class Mondoo < Formula
+class {{ .Class }} < Formula
   desc "{{ .Desc }}"
   homepage "{{ .Homepage }}"
   version "{{ .Version }}"

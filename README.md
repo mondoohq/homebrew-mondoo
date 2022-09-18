@@ -37,6 +37,4 @@ To freshen the Cask and Formula to the latest release of the Mondoo client, simp
 
 ```
 $ make update
-cd generator && go run . formula > ../Formula/mondoo.rb
-cd generator && go run . cask > ../Casks/mondoo-cli.rb
 ```
