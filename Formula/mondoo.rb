@@ -5,11 +5,11 @@ class Mondoo < Formula
   version "6.17.1"
 
   if Hardware::CPU.intel?
-    sha256 "ddb228b72739d935755a37e62de24d25d4b3f753d7ccbc1f7ca7ea44b31ec972"
-    url "https://releases.mondoo.com/mondoo/6.17.1/mondoo_6.17.1_darwin_amd64.tar.gz"
+    sha256 "3bcf09d71574c0707dd3d7aea7632e5594649f2238e36930833c32753204e950"
+    url "https://releases.mondoo.com/mondoo/6.17.1/mondoo_6.17.2_darwin_amd64.tar.gz"
   else
-    sha256 "fed557bb1b53ec02f5b30058ae57e6fadcada7ce2b37a2a8b3c46495dfbd21b8"
-    url "https://releases.mondoo.com/mondoo/6.17.1/mondoo_6.17.1_darwin_arm64.tar.gz"
+    sha256 "58166b482c41b6db366133f4088ff0e1227ce68432941f87a4431186876c4e71"
+    url "https://releases.mondoo.com/mondoo/6.17.1/mondoo_6.17.2_darwin_arm64.tar.gz"
   end
 
   def install
