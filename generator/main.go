@@ -9,35 +9,64 @@ import (
 	"strings"
 )
 
-const (
-	latestUrl = "https://releases.mondoo.com/mondoo/latest.json?ignoreCache=1"
-	desc      = "Mondoo Client CLI for the Mondoo Policy as Code Platform"
-	homepage  = "https://mondoo.com"
-	binary    = "mondoo"
-)
+type product struct {
+	latestUrl string
+	desc      string
+	homepage  string
+	binary    string
+	class     string
+}
 
-var versionMatcher = regexp.MustCompile(`mondoo\/(\d+.\d+.\d+)\/mondoo`)
+var products = map[string]product{
+	"mondoo": {
+		latestUrl: "https://releases.mondoo.com/mondoo/latest.json?ignoreCache=1",
+		desc:      "Mondoo Client CLI for the Mondoo Policy as Code Platform",
+		homepage:  "https://mondoo.com",
+		binary:    "mondoo",
+		class:     "Mondoo",
+	},
+	"cnquery": {
+		latestUrl: "https://releases.mondoo.com/cnquery/latest.json?ignoreCache=1",
+		desc:      "Cloud-Native Query - Asset Inventory Framework",
+		homepage:  "https://mondoo.com",
+		binary:    "cnquery",
+		class:     "Cnquery",
+	},
+	"cnspec": {
+		latestUrl: "https://releases.mondoo.com/cnspec/latest.json?ignoreCache=1",
+		desc:      "Cloud-Native Security and Policy Framework ",
+		homepage:  "https://mondoo.com",
+		binary:    "cnspec",
+		class:     "Cnspec",
+	},
+}
 
 // Usage: go run main.go
-// Example: go run generator/main.go Formula/mondoo.rb
+// Example: go run generator/main.go mondoo Formula/mondoo.rb
 func main() {
-	latest, err := fetchLatest()
+	if len(os.Args) != 3 {
+		panic("need argument 'formula' or 'cask'")
+	}
+
+	productName := os.Args[2]
+	product := products[productName]
+
+	latest, err := fetchLatest(product.latestUrl)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	if len(os.Args) != 2 {
-		panic("need argument 'formula' or 'cask'")
-	}
+	var versionMatcher = regexp.MustCompile(product.binary + `\/(\d+.\d+.\d+(?:[-\d\w]+)?)\/` + product.binary)
 
 	buf := new(bytes.Buffer)
 	switch os.Args[1] {
 	case "formula":
 		// filter by darwin releases and create formula
 		formula := &Formula{
-			Desc:     desc,
-			Homepage: homepage,
-			Binary:   binary,
+			Class:    product.class,
+			Desc:     product.desc,
+			Homepage: product.homepage,
+			Binary:   product.binary,
 		}
 
 		for i := range latest.Files {
@@ -58,9 +87,9 @@ func main() {
 		formula.Render(buf)
 	case "cask":
 		cask := &Cask{
-			Desc:     desc,
-			Homepage: homepage,
-			Binary:   binary,
+			Desc:     product.desc,
+			Homepage: product.homepage,
+			Binary:   product.binary,
 		}
 
 		for i := range latest.Files {
