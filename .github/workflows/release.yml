@@ -33,6 +33,8 @@ jobs:
         run: |
           echo '${{ github.event.inputs.version }}'
           git add Formula/mondoo.rb
+          git add Formula/cnquery.rb
+          git add Formula/cnspec.rb
           git add Casks/mondoo-cli.rb
           git commit -m '${{ github.event.inputs.version }}'
           git push origin master
