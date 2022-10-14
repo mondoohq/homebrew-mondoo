@@ -10,22 +10,28 @@ Once Homebrew is installed, you can add the Mondoo Tap via the following command
 $ brew tap mondoohq/mondoo
 ```
 
-To install mondoo:
+To install mondoo/cnquery/cnspec:
 
 ```
-$ brew install mondoo
+brew install mondoo
+brew install cnquery
+brew install cnspec
 ```
 
-To update mondoo:
+To update mondoo/cnquery/cnspec:
 
 ```
 brew update && brew upgrade mondoo
+brew update && brew upgrade cnquery
+brew update && brew upgrade cnspec
 ```
 
 At any time you can remove the installation and the tap via:
 
 ```
 brew uninstall mondoo
+brew uninstall cnquery
+brew uninstall cnspec
 brew untap mondoohq/mondoo
 ```
 
@@ -38,3 +44,7 @@ To freshen the Cask and Formula to the latest release of the Mondoo client, simp
 ```
 $ make update
 ```
+
+### Join the community!
+
+Join the [Mondoo Community GitHub Discussions](https://github.com/orgs/mondoohq/discussions) to collaborate and discuss.
