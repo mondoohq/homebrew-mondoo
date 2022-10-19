@@ -6,6 +6,9 @@ on:
         description: "version that should be released"
         required: true
         type: string
+  repository_dispatch:
+    types: [update]
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -13,6 +16,20 @@ jobs:
       # Checkout the branch
       - name: checkout
         uses: actions/checkout@v3
+      # Determine which version should be released based on event type
+      - name: Set Version (Workflow Dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo VERSION=${{ inputs.version }} >> $GITHUB_ENV
+      - name: Set Version (Repository Dispatch)
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          echo VERSION=${{ github.event.client_payload.version }} >> $GITHUB_ENV
+      - name: Unified Version
+        id: version
+        run: |
+          echo "Version: $VERSION"
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
 
       - name: setup go
         uses: actions/setup-go@v3
@@ -25,16 +42,15 @@ jobs:
       # Commit changes
       - name: setup git config
         run: |
-          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+          git config user.name "Mondoo Tools"
+          git config user.email "<tools@mondoo.com>"
 
       - name: commit
         run: |
-          echo '${{ github.event.inputs.version }}'
+          echo '${{ steps.version.outputs.version }}'
           git add Formula/mondoo.rb
           git add Formula/cnquery.rb
           git add Formula/cnspec.rb
           git add Casks/mondoo-cli.rb
-          git commit -m '${{ github.event.inputs.version }}'
+          git commit -m '${{ steps.version.outputs.version }}'
           git push origin master
