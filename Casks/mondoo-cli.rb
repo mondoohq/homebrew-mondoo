@@ -2,11 +2,11 @@
 cask "mondoo-cli" do
   name "Mondoo"
   desc "Mondoo Client CLI for the Mondoo Policy as Code Platform"
-  version "7.10.0"
+  version "7.11.0"
   homepage "https://mondoo.com"
 
   url "https://releases.mondoo.com/mondoo/#{version}/mondoo_#{version}_darwin_universal.pkg"
-  sha256 "f611628be24af553abcb03048c8862a164219be2414edc075327717ac6ad72ec"
+  sha256 "c1e68825e4ed9bda562b1838a53c607a0e9182a762627c87233788308c7f4775"
 
   livecheck do
     url "https://releases.mondoo.com/mondoo/latest/index.html"
