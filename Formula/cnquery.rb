@@ -2,14 +2,14 @@
 class Cnquery < Formula
   desc "Cloud-Native Query - Asset Inventory Framework"
   homepage "https://mondoo.com"
-  version "7.15.1"
+  version "7.16.1"
 
   if Hardware::CPU.intel?
-    sha256 "61900dd83ad13373bf53070ab993dd7e44d377e22b1f8b87563c5fc3ad43d746"
-    url "https://releases.mondoo.com/cnquery/7.15.1/cnquery_7.15.1_darwin_amd64.tar.gz"
+    sha256 "5b7845be907a8c970d331d1a02bab893e9659e27a20889a31d5859847020109c"
+    url "https://releases.mondoo.com/cnquery/7.16.1/cnquery_7.16.1_darwin_amd64.tar.gz"
   else
-    sha256 "f19a485213be96dad2ed608951fd6e6214b4a3da19b7f1ad04a38a177969aeec"
-    url "https://releases.mondoo.com/cnquery/7.15.1/cnquery_7.15.1_darwin_arm64.tar.gz"
+    sha256 "8f306935a9dd82d9f8f9348cca195f321c8fcc921c1f3bd0ef817db2db240010"
+    url "https://releases.mondoo.com/cnquery/7.16.1/cnquery_7.16.1_darwin_arm64.tar.gz"
   end
 
   def install
