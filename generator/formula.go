@@ -52,8 +52,7 @@ class {{ .Class }} < Formula
   desc "{{ .Desc }}"
   homepage "{{ .Homepage }}"
   version "{{ .Version }}"
-  depends_on "cnquery"
-  depends_on "cnspec"
+  {{ if eq .Class "Mondoo" }}depends_on "cnspec"{{ end }}{{ if eq .Class "Cnspec" }}depends_on "cnquery"{{ end }}
 
   if Hardware::CPU.intel?
     sha256 "{{ .Sha256Amd64 }}"
