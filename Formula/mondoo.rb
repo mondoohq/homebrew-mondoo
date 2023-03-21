@@ -3,7 +3,6 @@ class Mondoo < Formula
   desc "Mondoo Client CLI for the Mondoo Policy as Code Platform"
   homepage "https://mondoo.com"
   version "8.2.0"
-  depends_on "cnquery"
   depends_on "cnspec"
 
   if Hardware::CPU.intel?

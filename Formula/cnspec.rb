@@ -4,7 +4,6 @@ class Cnspec < Formula
   homepage "https://mondoo.com"
   version "8.2.0"
   depends_on "cnquery"
-  depends_on "cnspec"
 
   if Hardware::CPU.intel?
     sha256 "41d6ee5da0738e2f25c8993456e92900d936490287a4224b0929c592bb8c153f"

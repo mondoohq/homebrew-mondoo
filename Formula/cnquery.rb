@@ -3,8 +3,7 @@ class Cnquery < Formula
   desc "Cloud-Native Query - Asset Inventory Framework"
   homepage "https://mondoo.com"
   version "8.2.0"
-  depends_on "cnquery"
-  depends_on "cnspec"
+  
 
   if Hardware::CPU.intel?
     sha256 "884be7534cfc69048c1858ad80d604d1f60a0f092656eb33dc1f7949cdf151a1"
