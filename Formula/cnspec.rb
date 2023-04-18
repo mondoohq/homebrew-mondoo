@@ -2,15 +2,15 @@
 class Cnspec < Formula
   desc "Cloud-Native Security and Policy Framework "
   homepage "https://mondoo.com"
-  version "8.5.3"
+  version "8.6.0"
   depends_on "cnquery"
 
   if Hardware::CPU.intel?
-    sha256 "b71159ae9cadea0d17ea383ad24bf3955a52eb12fcf733df3c7eb1e98f5d7cea"
-    url "https://releases.mondoo.com/cnspec/8.5.3/cnspec_8.5.3_darwin_amd64.tar.gz"
+    sha256 "e3248e4d6566b02b56f8e0debd0de08c0f6f02799a3d8ccd8177a2ef817d5d25"
+    url "https://releases.mondoo.com/cnspec/8.6.0/cnspec_8.6.0_darwin_amd64.tar.gz"
   else
-    sha256 "6f564ce51e0467cb267e786b05ae29247f0076f2ebd9aa6e13bc30c4a318325b"
-    url "https://releases.mondoo.com/cnspec/8.5.3/cnspec_8.5.3_darwin_arm64.tar.gz"
+    sha256 "439d8e453286c253dce5f0c225de3af0ebd3deedb9c438e4ff97015e009d1fd0"
+    url "https://releases.mondoo.com/cnspec/8.6.0/cnspec_8.6.0_darwin_arm64.tar.gz"
   end
 
   def install
