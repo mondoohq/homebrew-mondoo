@@ -6,10 +6,10 @@ class Mondoo < Formula
   depends_on "cnspec"
 
   if Hardware::CPU.intel?
-    sha256 "06312fb254bc543dc3c5b5666dd0f964f854b68a5a4f73e9c2fc0c6826414fc7"
+    sha256 "013fa02fee6ddfe360230314d711819b61ddcd40a28bcaf5595b2dbf7b83c9d6"
     url "https://releases.mondoo.com/mondoo/8.8.0/mondoo_8.8.0_darwin_amd64.tar.gz"
   else
-    sha256 "06312fb254bc543dc3c5b5666dd0f964f854b68a5a4f73e9c2fc0c6826414fc7"
+    sha256 "013fa02fee6ddfe360230314d711819b61ddcd40a28bcaf5595b2dbf7b83c9d6"
     url "https://releases.mondoo.com/mondoo/8.8.0/mondoo_8.8.0_darwin_arm64.tar.gz"
   end
 
