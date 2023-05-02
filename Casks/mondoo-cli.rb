@@ -6,7 +6,7 @@ cask "mondoo-cli" do
   homepage "https://mondoo.com"
 
   url "https://releases.mondoo.com/mondoo/#{version}/mondoo_#{version}_darwin_universal.pkg"
-  sha256 ""
+  sha256 "aea9bc1cf4b809a4f4127fc2126cef66153fda20760fb2e9db60bd8fa6dc74ba"
 
   livecheck do
     url "https://releases.mondoo.com/mondoo/latest/index.html"
