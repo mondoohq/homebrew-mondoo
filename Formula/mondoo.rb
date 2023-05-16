@@ -2,15 +2,15 @@
 class Mondoo < Formula
   desc "Mondoo Client CLI for the Mondoo Policy as Code Platform"
   homepage "https://mondoo.com"
-  version "8.9.1"
+  version "8.10.0"
   depends_on "cnspec"
 
   if Hardware::CPU.intel?
-    sha256 "577cf60b597aaebfe19a9ea61138e33d0b0bfbbfde7cc4304557f3451186237d"
-    url "https://releases.mondoo.com/mondoo/8.9.1/mondoo_8.9.1_darwin_amd64.tar.gz"
+    sha256 "587f0a63c33729a23a375850395c0bd67cd0bbaa23ca78c76dbeb65b04e7d521"
+    url "https://releases.mondoo.com/mondoo/8.10.0/mondoo_8.10.0_darwin_amd64.tar.gz"
   else
-    sha256 "577cf60b597aaebfe19a9ea61138e33d0b0bfbbfde7cc4304557f3451186237d"
-    url "https://releases.mondoo.com/mondoo/8.9.1/mondoo_8.9.1_darwin_arm64.tar.gz"
+    sha256 "587f0a63c33729a23a375850395c0bd67cd0bbaa23ca78c76dbeb65b04e7d521"
+    url "https://releases.mondoo.com/mondoo/8.10.0/mondoo_8.10.0_darwin_arm64.tar.gz"
   end
 
   def install
