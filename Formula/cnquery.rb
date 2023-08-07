@@ -6,10 +6,10 @@ class Cnquery < Formula
   
 
   if Hardware::CPU.intel?
-    sha256 "1e101f9206bc07088bb08d43ba403e4695a406a66a6c24d80c4fc05930014889"
+    sha256 "a3aa5c8f159cdd916cbb9561ff2157357d285d3318ba0aaf86009d2e949a4c5a"
     url "https://releases.mondoo.com/cnquery/8.22.0/cnquery_8.22.0_darwin_amd64.tar.gz"
   else
-    sha256 "0173db4652d6f0d3bae0f56237b06897d02bd9ffb76a25297e6d7adb4271406a"
+    sha256 "faf5f15e1a200b2e8fb70fc951e599f61babf2e6df7d6cc7fda19463833fbfd6"
     url "https://releases.mondoo.com/cnquery/8.22.0/cnquery_8.22.0_darwin_arm64.tar.gz"
   end
 
