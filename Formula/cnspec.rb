@@ -1,3 +1,5 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
 
 class Cnspec < Formula
   desc "Cloud-Native Security and Policy Framework "

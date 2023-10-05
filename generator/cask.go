@@ -17,6 +17,9 @@ type Cask struct {
 }
 
 var caskTemplate = `
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
 cask "mondoo-cli" do
   name "Mondoo"
   desc "{{ .Desc }}"
