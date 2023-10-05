@@ -1,7 +1,8 @@
+
 # Copyright (c) Mondoo, Inc.
 # SPDX-License-Identifier: BUSL-1.1
 
-cask "mondoo" do
+cask mondoo do
   name "Mondoo"
   desc "Mondoo Enterprise Package for cnquery and cnspec"
   version "9.0.0"

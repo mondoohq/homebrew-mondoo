@@ -9,6 +9,7 @@ import (
 )
 
 type Cask struct {
+	Pkg      string `json:"pkg"`
 	Desc     string `json:"desc"`
 	Homepage string `json:"homepage"`
 	Version  string `json:"version"`
@@ -20,7 +21,7 @@ var caskTemplate = `
 # Copyright (c) Mondoo, Inc.
 # SPDX-License-Identifier: BUSL-1.1
 
-cask "mondoo" do
+cask {{ .Pkg }} do
   name "Mondoo"
   desc "{{ .Desc }}"
   version "{{ .Version }}"

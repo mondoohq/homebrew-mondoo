@@ -18,15 +18,25 @@ type product struct {
 	homepage  string
 	binary    string
 	class     string
+	pkg       string
 }
 
 var products = map[string]product{
 	"mondoo": {
 		latestUrl: "https://releases.mondoo.com/mondoo/latest.json?ignoreCache=1",
-		desc:      "Mondoo Client CLI for the Mondoo Policy as Code Platform",
+		desc:      "Mondoo Enterprise Package for cnquery and cnspec",
 		homepage:  "https://mondoo.com",
 		binary:    "mondoo",
 		class:     "Mondoo",
+		pkg:       "mondoo",
+	},
+	"mondoo-cli": {
+		latestUrl: "https://releases.mondoo.com/mondoo/latest.json?ignoreCache=1",
+		desc:      "Mondoo Enterprise Package for cnquery and cnspec",
+		homepage:  "https://mondoo.com",
+		binary:    "mondoo",
+		class:     "Mondoo",
+		pkg:       "mondoo-cli",
 	},
 	"cnquery": {
 		latestUrl: "https://releases.mondoo.com/cnquery/latest.json?ignoreCache=1",
@@ -90,6 +100,7 @@ func main() {
 		formula.Render(buf)
 	case "cask":
 		cask := &Cask{
+			Pkg:      product.pkg,
 			Desc:     product.desc,
 			Homepage: product.homepage,
 			Binary:   product.binary,
