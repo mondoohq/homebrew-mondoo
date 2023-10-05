@@ -1,9 +1,9 @@
 # Copyright (c) Mondoo, Inc.
 # SPDX-License-Identifier: BUSL-1.1
 
-cask "mondoo-cli" do
+cask "mondoo" do
   name "Mondoo"
-  desc "Mondoo Client CLI for the Mondoo Policy as Code Platform"
+  desc "Mondoo Enterprise Package for cnquery and cnspec"
   version "9.0.0"
   homepage "https://mondoo.com"
 
