@@ -6,10 +6,10 @@ class Cnspec < Formula
   depends_on "cnquery"
 
   if Hardware::CPU.intel?
-    sha256 "4f2a1af917deed1974097c1072ff174dff5862819113bde29fe58b2ff01ab573"
+    sha256 "e73caf8abc8efce91ac7b894a1cf9664249bbb3e89394c3d859514f692484a2c"
     url "https://releases.mondoo.com/cnspec/9.0.0/cnspec_9.0.0_darwin_amd64.tar.gz"
   else
-    sha256 "00b980b0bb67e9142b6507c885cc67f2c2dcc92407f25ec5ec67f2dce99153b5"
+    sha256 "aaffc96a0b90edbaa5f24cdd03f86c1cfa3b7eb608e07a77d318bed79a5f18d3"
     url "https://releases.mondoo.com/cnspec/9.0.0/cnspec_9.0.0_darwin_arm64.tar.gz"
   end
 
