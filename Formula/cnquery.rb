@@ -1,3 +1,5 @@
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
 
 class Cnquery < Formula
   desc "Cloud-Native Query - Asset Inventory Framework"
