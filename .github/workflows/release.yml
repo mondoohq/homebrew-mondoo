@@ -48,7 +48,6 @@ jobs:
       - name: commit
         run: |
           echo '${{ steps.version.outputs.version }}'
-          git add Formula/mondoo.rb
           git add Formula/cnquery.rb
           git add Formula/cnspec.rb
           git add Casks/mondoo-cli.rb

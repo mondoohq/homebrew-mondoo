@@ -1,6 +1,6 @@
 # Mondoo Homebrew Tap
 
-Welcome to the Mondoo Homebrew Tap!  Here you will find both a formula and cask for installation of the Mondoo Client.  The formula will install the Mondoo Client binary in your Homebrew application root (usually ).  The cask wraps our signed and notorized Apple PKG installing it to /Library/Mondoo.  
+Welcome to the Mondoo Homebrew Tap!  Here you will find both a formula and cask for installation of cnquery and cnspec.  The formulas will install the cnquery and/or cnspec binaries..  The cask wraps our signed and notorized Apple PKG installing it to /Library/Mondoo.  Note that cnspec depends on cnquery, so if you want both you only need to install cnspec.
 
 To install Homebrew, visit https://brew.sh/.
 
@@ -10,18 +10,16 @@ Once Homebrew is installed, you can add the Mondoo Tap via the following command
 $ brew tap mondoohq/mondoo
 ```
 
-To install mondoo/cnquery/cnspec:
+To install cnquery/cnspec:
 
 ```
-brew install mondoo
 brew install cnquery
 brew install cnspec
 ```
 
-To update mondoo/cnquery/cnspec:
+To update cnquery/cnspec:
 
 ```
-brew update && brew upgrade mondoo
 brew update && brew upgrade cnquery
 brew update && brew upgrade cnspec
 ```
@@ -29,7 +27,6 @@ brew update && brew upgrade cnspec
 At any time you can remove the installation and the tap via:
 
 ```
-brew uninstall mondoo
 brew uninstall cnquery
 brew uninstall cnspec
 brew untap mondoohq/mondoo
