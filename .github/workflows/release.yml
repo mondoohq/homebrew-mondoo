@@ -51,5 +51,6 @@ jobs:
           git add Formula/cnquery.rb
           git add Formula/cnspec.rb
           git add Casks/mondoo-cli.rb
+          git add Casks/mondoo.rb
           git commit -m '${{ steps.version.outputs.version }}'
           git push origin master
