@@ -20,7 +20,7 @@ var caskTemplate = `
 # Copyright (c) Mondoo, Inc.
 # SPDX-License-Identifier: BUSL-1.1
 
-cask "mondoo-cli" do
+cask "mondoo" do
   name "Mondoo"
   desc "{{ .Desc }}"
   version "{{ .Version }}"
