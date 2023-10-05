@@ -51,6 +51,9 @@ type Formula struct {
 }
 
 var formulaTemplate = `
+# Copyright (c) Mondoo, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
 class {{ .Class }} < Formula
   desc "{{ .Desc }}"
   homepage "{{ .Homepage }}"
