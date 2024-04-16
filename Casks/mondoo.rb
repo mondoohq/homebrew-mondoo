@@ -5,11 +5,11 @@
 cask "mondoo" do
   name "Mondoo"
   desc "Mondoo Enterprise Package for cnquery and cnspec"
-  version "10.12.1"
+  version "10.12.2"
   homepage "https://mondoo.com"
 
   url "https://releases.mondoo.com/mondoo/#{version}/mondoo_#{version}_darwin_universal.pkg"
-  sha256 "9c050e3dbc24499ed0cd088fbf29b5e9f04728bea462c365a0f8c919148f23e5"
+  sha256 "9d99226cae49cea82cd468d59dc4ba0b23f91280a60006a7d740f4fd6dfcecfc"
 
   livecheck do
     url "https://releases.mondoo.com/mondoo/latest/index.html"
