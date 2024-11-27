@@ -34,7 +34,7 @@ jobs:
       - name: setup go
         uses: actions/setup-go@v3
         with:
-          go-version: '>=1.17.0'
+          go-version: '>=1.23.0'
 
       # runs go to generate the update
       - run: make update
