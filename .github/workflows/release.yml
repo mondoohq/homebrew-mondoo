@@ -6,6 +6,12 @@ on:
         description: "version that should be released"
         required: true
         type: string
+  workflow_call:
+    inputs:
+      version:
+        description: "version that should be released"
+        required: true
+        type: string
   repository_dispatch:
     types: [update]
 
