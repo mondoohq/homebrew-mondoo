@@ -24,7 +24,9 @@ on:
         type: boolean
   repository_dispatch:
     types: [update]
-
+defaults:
+  run:
+    working-directory: homebrew-mondoo
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -32,6 +34,8 @@ jobs:
       # Checkout the branch
       - name: checkout
         uses: actions/checkout@v4
+        with:
+          repository: homebrew-mondoo
       # Determine which version should be released based on event type
       - name: Set Version (Workflow Dispatch)
         if: ${{ inputs.version != '' }}
