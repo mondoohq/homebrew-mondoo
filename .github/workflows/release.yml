@@ -36,6 +36,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: mondoohq/homebrew-mondoo
+          path: homebrew-mondoo
       # Determine which version should be released based on event type
       - name: Set Version (Workflow Dispatch)
         if: ${{ inputs.version != '' }}
