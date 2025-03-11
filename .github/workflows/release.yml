@@ -6,6 +6,22 @@ on:
         description: "version that should be released"
         required: true
         type: string
+      skip-publish:
+        description: 'Skip publish?'
+        required: false
+        default: false
+        type: boolean
+  workflow_call:
+    inputs:
+      version:
+        description: "version that should be released"
+        required: true
+        type: string
+      skip-publish:
+        description: 'Skip publish?'
+        required: false
+        default: false
+        type: boolean
   repository_dispatch:
     types: [update]
 
@@ -18,11 +34,11 @@ jobs:
         uses: actions/checkout@v4
       # Determine which version should be released based on event type
       - name: Set Version (Workflow Dispatch)
-        if: github.event_name == 'workflow_dispatch'
+        if: ${{ inputs.version != '' }}
         run: |
           echo VERSION=${{ inputs.version }} >> $GITHUB_ENV
       - name: Set Version (Repository Dispatch)
-        if: github.event_name == 'repository_dispatch'
+        if: ${{ github.event_name == 'repository_dispatch' }}
         run: |
           echo VERSION=${{ github.event.client_payload.version }} >> $GITHUB_ENV
       - name: Unified Version
@@ -45,7 +61,13 @@ jobs:
           git config user.name "Mondoo Tools"
           git config user.email "<tools@mondoo.com>"
 
+      - name: diff
+        if: ${{ inputs.skip-publish }}
+        run: |
+          git diff --color
+
       - name: commit
+        if: ${{ ! inputs.skip-publish }}
         run: |
           echo '${{ steps.version.outputs.version }}'
           git add Formula/cnquery.rb
