@@ -22,10 +22,6 @@ on:
         required: false
         default: false
         type: boolean
-      token:
-        description: 'GITHUB_TOKEN for git operations'
-        required: false
-        type: string
   repository_dispatch:
     types: [update]
 defaults:
@@ -35,12 +31,22 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      # fetch a token for the mondoo-mergebot app
+      - name: Generate token
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.MONDOO_MERGEBOT_APP_ID }}
+          private-key: ${{ secrets.MONDOO_MERGEBOT_APP_PRIVATE_KEY }}
+          owner: mondoohq
+          repositories: |
+            homebrew-mondoo
       # Checkout the branch
       - name: checkout
         uses: actions/checkout@v4
         with:
           repository: mondoohq/homebrew-mondoo
-          token: ${{ inputs.token || github.token }}
+          token: ${{ steps.generate-token.outputs.token }}
           path: homebrew-mondoo
       # Determine which version should be released based on event type
       - name: Set Version (Workflow Dispatch)
