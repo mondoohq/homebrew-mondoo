@@ -58,7 +58,7 @@ class {{ .Class }} < Formula
   desc "{{ .Desc }}"
   homepage "{{ .Homepage }}"
   version "{{ .Version }}"
-  {{ if eq .Class "Mondoo" }}depends_on "cnspec"{{ end }}{{ if eq .Class "Cnspec" }}depends_on "cnquery"{{ end }}
+  {{ if eq .Class "Mondoo" }}depends_on "cnspec"{{ end }}{{ if eq .Class "Cnspec" }}depends_on "mql"{{ end }}{{ if eq .Class "Cnquery" }}depends_on "cnspec"{{ end }}
 
   if Hardware::CPU.intel?
     sha256 "{{ .Sha256Amd64 }}"
@@ -69,11 +69,12 @@ class {{ .Class }} < Formula
   end
 
   def install
-    bin.install "{{ .Binary }}"
+    {{ if eq .Class "Cnquery" }}# Transitional package: cnspec provides the cnquery symlink{{ else }}bin.install "{{ .Binary }}"{{ if eq .Class "Cnspec" }}
+    bin.install_symlink "cnspec" => "cnquery"{{ end }}{{ end }}
   end
 
   test do
-    system "#{bin}/{{ .Binary }} --version"
+    {{ if eq .Class "Cnquery" }}system Formula["cnspec"].opt_bin/"cnspec", "--version"{{ else }}system "#{bin}/{{ .Binary }} --version"{{ end }}
   end
 end
 `

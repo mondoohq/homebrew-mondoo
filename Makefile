@@ -1,6 +1,7 @@
 update:
 	cd generator && go run . formula cnquery > ../Formula/cnquery.rb
 	cd generator && go run . formula cnspec  > ../Formula/cnspec.rb
+	cd generator && go run . formula mql     > ../Formula/mql.rb
 	cd generator && go run . cask mondoo-cli > ../Casks/mondoo-cli.rb  # Backwards compatibility
 	cd generator && go run . cask mondoo     > ../Casks/mondoo.rb
 

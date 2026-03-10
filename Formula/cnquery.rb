@@ -3,25 +3,25 @@
 # SPDX-License-Identifier: BUSL-1.1
 
 class Cnquery < Formula
-  desc "Cloud-Native Query - Asset Inventory Framework"
+  desc "Transitional package for cnquery to cnspec migration"
   homepage "https://mondoo.com"
-  version "12.23.1"
-  
+  version "13.0.0"
+  depends_on "cnspec"
 
   if Hardware::CPU.intel?
-    sha256 "41f044c87ded7a91622467c0ceb1bdacdaf7537d1f8339c38e4ff230dafb9a9b"
-    url "https://releases.mondoo.com/cnquery/12.23.1/cnquery_12.23.1_darwin_amd64.tar.gz"
+    sha256 "b57d498cbb6965e936e858f6466006e29d1b8e82975ef27e660eb6dbca927e5e"
+    url "https://releases.mondoo.com/cnspec/13.0.0/cnspec_13.0.0_darwin_amd64.tar.gz"
   else
-    sha256 "c8dc6454c6b064e75bdeaa9e19ca362cf9ecb8c63ee46523aa4c136770c05717"
-    url "https://releases.mondoo.com/cnquery/12.23.1/cnquery_12.23.1_darwin_arm64.tar.gz"
+    sha256 "aea4e2f6d341c748a04f22d048fb51e9c897568e4f640da022ffa3a4cd9a53f9"
+    url "https://releases.mondoo.com/cnspec/13.0.0/cnspec_13.0.0_darwin_arm64.tar.gz"
   end
 
   def install
-    bin.install "cnquery"
+    # Transitional package: cnspec provides the cnquery symlink
   end
 
   test do
-    system "#{bin}/cnquery --version"
+    system Formula["cnspec"].opt_bin/"cnspec", "--version"
   end
 end
 
