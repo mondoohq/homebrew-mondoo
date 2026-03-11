@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: BUSL-1.1
 
 class Cnspec < Formula
-  desc "Cloud-Native Security and Policy Framework "
+  desc "Cloud-Native Security and Policy Framework"
   homepage "https://mondoo.com"
   version "13.0.0"
   depends_on "mql"
