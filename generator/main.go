@@ -39,18 +39,25 @@ var products = map[string]product{
 		pkg:       "mondoo-cli",
 	},
 	"cnquery": {
-		latestUrl: "https://releases.mondoo.com/cnquery/latest.json?ignoreCache=1",
-		desc:      "Cloud-Native Query - Asset Inventory Framework",
+		latestUrl: "https://releases.mondoo.com/cnspec/latest.json?ignoreCache=1",
+		desc:      "Transitional package for cnquery to cnspec migration",
 		homepage:  "https://mondoo.com",
-		binary:    "cnquery",
+		binary:    "cnspec",
 		class:     "Cnquery",
 	},
 	"cnspec": {
 		latestUrl: "https://releases.mondoo.com/cnspec/latest.json?ignoreCache=1",
-		desc:      "Cloud-Native Security and Policy Framework ",
+		desc:      "Cloud-Native Security and Policy Framework",
 		homepage:  "https://mondoo.com",
 		binary:    "cnspec",
 		class:     "Cnspec",
+	},
+	"mql": {
+		latestUrl: "https://releases.mondoo.com/mql/latest.json?ignoreCache=1",
+		desc:      "MQL - Asset Inventory Query Language",
+		homepage:  "https://mondoo.com",
+		binary:    "mql",
+		class:     "Mql",
 	},
 }
 

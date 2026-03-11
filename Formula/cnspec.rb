@@ -6,7 +6,7 @@ class Cnspec < Formula
   desc "Cloud-Native Security and Policy Framework "
   homepage "https://mondoo.com"
   version "13.0.0"
-  depends_on "cnquery"
+  depends_on "mql"
 
   if Hardware::CPU.intel?
     sha256 "b57d498cbb6965e936e858f6466006e29d1b8e82975ef27e660eb6dbca927e5e"
@@ -18,6 +18,7 @@ class Cnspec < Formula
 
   def install
     bin.install "cnspec"
+    bin.install_symlink "cnspec" => "cnquery"
   end
 
   test do
