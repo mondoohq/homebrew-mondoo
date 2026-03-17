@@ -5,15 +5,15 @@
 class Cnspec < Formula
   desc "Cloud-Native Security and Policy Framework"
   homepage "https://mondoo.com"
-  version "13.0.1"
+  version "13.1.0"
   depends_on "mql"
 
   if Hardware::CPU.intel?
-    sha256 "825dcee2bf5018bb9044acc0e9a2fde58906cdfd668c85227e41dc625fd23f5f"
-    url "https://releases.mondoo.com/cnspec/13.0.1/cnspec_13.0.1_darwin_amd64.tar.gz"
+    sha256 "dd18b25f0d7d02134c0b8162afaac7e6e94d6ba8614d5d7b4d1d5d4147a95e0c"
+    url "https://releases.mondoo.com/cnspec/13.1.0/cnspec_13.1.0_darwin_amd64.tar.gz"
   else
-    sha256 "2b00c54642e2f70a9ba49772f81204a41d766c144cba860c9c2aa95a1584b8d8"
-    url "https://releases.mondoo.com/cnspec/13.0.1/cnspec_13.0.1_darwin_arm64.tar.gz"
+    sha256 "28a208634c9d122fbdad2f036d777587861a6d7f48c05c8d184d1afedbaf5c98"
+    url "https://releases.mondoo.com/cnspec/13.1.0/cnspec_13.1.0_darwin_arm64.tar.gz"
   end
 
   def install

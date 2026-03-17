@@ -5,15 +5,15 @@
 class Mql < Formula
   desc "MQL - Asset Inventory Query Language"
   homepage "https://mondoo.com"
-  version "13.0.1"
+  version "13.1.0"
   
 
   if Hardware::CPU.intel?
-    sha256 "5a362a3fb60291782bbe500825f7db50ad5fde17657a6a9374630489d34803ea"
-    url "https://releases.mondoo.com/mql/13.0.1/mql_13.0.1_darwin_amd64.tar.gz"
+    sha256 "e49211541da52fb820857a142a7c56e173e0691fcfc6cf8ed914443679cd3a60"
+    url "https://releases.mondoo.com/mql/13.1.0/mql_13.1.0_darwin_amd64.tar.gz"
   else
-    sha256 "8f0d67c43b14a5aa65f868795e70b79a73a4b1a07ac0d7e6a7b434d43d95fa3a"
-    url "https://releases.mondoo.com/mql/13.0.1/mql_13.0.1_darwin_arm64.tar.gz"
+    sha256 "af77dde70ebcd24dcf963d826c36fd496398f2b69a95c2874d219b85cfa8ec66"
+    url "https://releases.mondoo.com/mql/13.1.0/mql_13.1.0_darwin_arm64.tar.gz"
   end
 
   def install
