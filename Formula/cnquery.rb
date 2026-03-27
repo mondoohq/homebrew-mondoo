@@ -1,5 +1,5 @@
 
-# Copyright (c) Mondoo, Inc.
+# Copyright Mondoo, Inc. 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 class Cnquery < Formula
@@ -10,6 +10,7 @@ class Cnquery < Formula
 
   url "https://github.com/mondoohq/mql/archive/refs/tags/v13.2.0.tar.gz"
   sha256 "b1588abac59122add26efb9b3e91a4c7e68535f24e1579fbd95a4b38488dd438"
+
 
   def install
     # cnspec already provides the cnquery symlink via bin.install_symlink
