@@ -1,4 +1,4 @@
-// Copyright (c) Mondoo, Inc.
+// Copyright Mondoo, Inc. 2026
 // SPDX-License-Identifier: BUSL-1.1
 
 package main
@@ -18,7 +18,7 @@ type Cask struct {
 }
 
 var caskTemplate = `
-# Copyright (c) Mondoo, Inc.
+# Copyright Mondoo, Inc. 2026
 # SPDX-License-Identifier: BUSL-1.1
 
 cask "{{ .Pkg }}" do
