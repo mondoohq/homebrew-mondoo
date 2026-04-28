@@ -81,14 +81,31 @@ jobs:
         run: |
           git diff --color
 
-      - name: commit
+      # Open a PR and merge it immediately. Direct pushes to master are
+      # blocked by an org ruleset (PR required), and "Allow auto-merge" is
+      # disabled on this repo, so we merge via the API right after opening
+      # the PR. Required reviews on master are 0, so the merge succeeds
+      # without human intervention.
+      - name: open and merge release PR
         if: ${{ ! inputs.skip-publish }}
+        env:
+          GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+          VERSION: ${{ steps.version.outputs.version }}
         run: |
-          echo '${{ steps.version.outputs.version }}'
+          BRANCH="release/v${VERSION}-${GITHUB_RUN_ID}"
+          git checkout -b "${BRANCH}"
           git add Formula/cnquery.rb
           git add Formula/cnspec.rb
           git add Formula/mql.rb
           git add Casks/mondoo-cli.rb
           git add Casks/mondoo.rb
-          git commit -m '${{ steps.version.outputs.version }}'
-          git push origin master
+          git commit -m "${VERSION}"
+          git push origin "${BRANCH}"
+          PR_URL=$(gh pr create \
+            --repo mondoohq/homebrew-mondoo \
+            --base master \
+            --head "${BRANCH}" \
+            --title "${VERSION}" \
+            --body "Automated release bump for ${VERSION}")
+          echo "Opened: ${PR_URL}"
+          gh pr merge "${PR_URL}" --squash
