@@ -5,15 +5,15 @@
 class Cnquery < Formula
   desc "Transitional package for cnquery to cnspec migration"
   homepage "https://mondoo.com"
-  version "13.25.0"
+  version "13.26.0"
   depends_on "cnspec"
 
   if Hardware::CPU.intel?
-    sha256 "7ad33f95091cc9e4230385c719a92aea10dfcd735acb832a2e34512e80d4a0ab"
-    url "https://releases.mondoo.com/cnspec/13.25.0/cnspec_13.25.0_darwin_amd64.tar.gz"
+    sha256 "c1e9e788fd37ee62b11d2fc41f668ac3c4d75a74756cc64ea61840c57c4fa47a"
+    url "https://releases.mondoo.com/cnspec/13.26.0/cnspec_13.26.0_darwin_amd64.tar.gz"
   else
-    sha256 "79443bef7c5fe5d0847ba97cd0cbb24cf252179eab2becf56592648a4dad404e"
-    url "https://releases.mondoo.com/cnspec/13.25.0/cnspec_13.25.0_darwin_arm64.tar.gz"
+    sha256 "0c177794311388da3d86a4fc52b50c9fbafe24432de198d04d560e294e34ace6"
+    url "https://releases.mondoo.com/cnspec/13.26.0/cnspec_13.26.0_darwin_arm64.tar.gz"
   end
 
   def install
